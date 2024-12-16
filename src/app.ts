@@ -12,7 +12,6 @@ class App {
         this.app = express();
         this.initializeMiddlewares();
         this.initializeControllers(controllers);
-        this.listen();
     }
 
     private initializeMiddlewares() {
@@ -22,12 +21,6 @@ class App {
     private initializeControllers(controllers: BaseController[]) {
         controllers.forEach((controller) => {
             this.app.use(controller.basePath, controller.Router());
-        });
-    }
-
-    private listen() {
-        this.app.listen(this.port, () => {
-            console.log(`Server running at http://localhost:${this.port}`);
         });
     }
 }
