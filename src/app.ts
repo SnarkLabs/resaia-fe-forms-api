@@ -1,6 +1,6 @@
 import express, { Application } from 'express';
-import { BaseController } from './controllers/Base.controller';
-import { AuthController } from './controllers/Auth.controller';
+import { BaseController } from './controllers/base.controller';
+import { HelloController } from './controllers/hello.controller';
 
 class App {
     public app: Application;
@@ -32,6 +32,6 @@ class App {
     }
 }
 
-const app = new App([new AuthController()]).app;
+const app = new App([new HelloController()]).app;
 
 export default app;

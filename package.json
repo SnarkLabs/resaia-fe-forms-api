@@ -1,11 +1,11 @@
 {
-  "name": "testnet-campaign",
+  "name": "express-ts-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.ts",
   "scripts": {
     "build": "tsc",
-    "start:prod": "npm run build && node build/index.js",
+    "start:prod": "yarn build && node build/index.js",
     "start:dev": "nodemon src/index.ts"
   },
   "keywords": [],
