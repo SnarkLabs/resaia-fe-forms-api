@@ -27,6 +27,4 @@ class App {
 
 const app = new App([new HelloController()]).app;
 
-export default function() {
-    return "Hello World";
-};
+export default app;
