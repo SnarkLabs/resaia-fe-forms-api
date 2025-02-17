@@ -1,6 +1,6 @@
 import express, { Application } from 'express';
 import { BaseController } from './controllers/base.controller';
-import { HelloController } from './controllers/hello.controller';
+import { FormsController } from './controllers/forms.controller';
 
 class App {
     public app: Application;
@@ -22,9 +22,15 @@ class App {
         controllers.forEach((controller) => {
             this.app.use(controller.basePath, controller.Router());
         });
+        this.app.get('/health', (req, res) => {
+            return res.json({
+                status: 'success',
+                message: 'API is running...'
+            });
+        })
     }
 }
 
-const app = new App([new HelloController()]).app;
+const app = new App([new FormsController()]).app;
 
 export default app;

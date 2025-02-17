@@ -1,0 +1,41 @@
+service: resaia-forms-api
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: ${opt:stage, 'prod'}
+  region: ${opt:region, 'us-east-1'}
+  profile: ${opt:profile, 'resaia'}
+
+functions:
+  api:
+    handler: src/lambda.handler
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+      - http:
+          path: /
+          method: ANY
+
+package:
+  patterns:
+    - "!.git/**"
+    - "!.vscode/**"
+    - "!venv/**"
+    - "!node_modules/**"
+    - "src/**"
+    - "perms/**"
+    - "!node_modules/dtrace-provider/**"
+  excludeDevDependencies: true
+
+plugins:
+  - serverless-jetpack
+  - serverless-dotenv-plugin
+
+custom:
+  dotenv:
+    path: .env
+  jetpack:
+    preInclude:
+      - "!node_modules/dtrace-provider/**"
