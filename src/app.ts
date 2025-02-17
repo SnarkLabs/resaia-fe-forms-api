@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import { BaseController } from './controllers/base.controller';
 import { FormsController } from './controllers/forms.controller';
+import cors from 'cors';
 
 class App {
     public app: Application;
@@ -15,6 +16,7 @@ class App {
     }
 
     private initializeMiddlewares() {
+        this.app.use(cors());
         this.app.use(express.json());
     }
 
